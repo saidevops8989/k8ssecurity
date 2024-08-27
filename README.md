@@ -1,19 +1,19 @@
-Install ETCD
+**Install ETCD**
 
 ##
         mkdir /root/binaries
         cd /root/binaries
-download and copy binaries 
+**download and copy binaries** 
 ##
         wget https://github.com/etcd-io/etcd/releases/download/v3.5.4/etcd-v3.5.4-linux-amd64.tar.gz
         tar -xzvf etcd-v3.5.4-linux-amd64.tar.gz
         cd etcd-v3.5.4-linux-amd64
         cp etcd etcdctl /usr/local/bin/
-starting etcd from cli in the fore ground
+**starting etcd from cli in the fore ground**
 ##
         etcd
 
-verification on the other ternimal we can add some data to etcd to check
+**verification on the other ternimal we can add some data to etcd to check**
 ##
         etcdctl put db "uploading some text to etcd"
         etcdctl get db
@@ -21,7 +21,7 @@ verification on the other ternimal we can add some data to etcd to check
 This way of getting data without use of certificates is not sercure so we use certificates
 Lets 1st generate certs and use them in etcd
 
-Steps Generate Client Certificate and Client Key
+**Steps Generate Client Certificate and Client Key**
 ##
     cd /root/certificates
 
@@ -32,12 +32,12 @@ Steps Generate Client Certificate and Client Key
 
         openssl x509 -req -in ca.csr -signkey ca.key -CAcreateserial  -out ca.crt -days 1000
 
-step 2 - start etcd server
+**step start etcd server**
 
 ##
         etcd --cert-file=/root/certificates/ca.crt --key-file=/root/certificates/ca.key --advertise-client-urls=https://127.0.0.1:2379 --listen-client-urls=https://127.0.0.1:2379
 
-step 3 - verify
+step verify
 ##
         etcdctl put course "cks"
 **doesn't work**
@@ -55,7 +55,7 @@ create dir
 ##
                 mkdir /var/lib/etcd
                 chmod 700 /var/lib/etcd
-create systemd file
+**create systemd file**
 ##
                 cat <<EOF | sudo tee /etc/systemd/system/etcd.service
                 [Unit]
@@ -77,13 +77,13 @@ create systemd file
                 [Install]
                 WantedBy=multi-user.target
                 EOF
-start etcd
+**start etcd**
 ##
                 systemctl daemon reload
                 systemctl start etcd
                 systemctl statud etcd
 
-check logs
+**check logs**
 ##
                 journalctl -u etcd
 
