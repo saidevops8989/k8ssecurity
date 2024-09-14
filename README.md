@@ -23,6 +23,7 @@ Lets 1st generate certs and use them in etcd
 
 **Steps Generate Client Certificate and Client Key**
 ##
+    mkdir /root/certificates
     cd /root/certificates
 
 ##
