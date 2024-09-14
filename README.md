@@ -88,6 +88,10 @@ create dir
 ##
                 journalctl -u etcd
 
+                etcdctl --endpoints=https://127.0.0.1:2379 --insecure-skip-tls-verify  --insecure-transport=false --cert /root/certificates/ca.crt --key /root/certificates/etcd.key put  course "k8s security"
+
+                etcdctl --endpoints=https://127.0.0.1:2379 --insecure-skip-tls-verify  --insecure-transport=false --cert /root/certificates/ca.crt --key /root/certificates/etcd.key get  course 
+
 
 
 
