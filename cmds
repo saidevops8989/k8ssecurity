@@ -21,6 +21,48 @@ Available Commands:
 
 #kubectl describe serviceaccount
 
+# kubectl create token dashboard-sa
+
+#kubectl set serviceaccount deploy/web-dashboard dashboard-sa
+
+#kubectl apply -f kk.yaml 
+
+# cat kk.yaml 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-dashboard
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: web-dashboard
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: web-dashboard
+    spec:
+      serviceAccountName: dashboard-sa
+      containers:
+      - image: gcr.io/kodekloud/customimage/my-kubernetes-dashboard
+        imagePullPolicy: Always
+        name: web-dashboard
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+
+
+
+##
+
+
 
 
 
