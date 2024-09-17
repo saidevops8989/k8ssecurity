@@ -93,6 +93,8 @@ create dir
                 etcdctl --endpoints=https://127.0.0.1:2379 --insecure-skip-tls-verify  --insecure-transport=false --cert /root/certificates/ca.crt --key /root/certificates/etcd.key get  course 
 
 
+<img width="1154" alt="Screenshot 2024-09-17 at 11 43 15 AM" src="https://github.com/user-attachments/assets/b6c9ae74-2fd2-4cc1-a16f-c10b106bc50d">
 
+<img width="1098" alt="Screenshot 2024-09-17 at 11 43 53 AM" src="https://github.com/user-attachments/assets/c736bb75-e1e4-4d83-9d0b-91cde610a9c0">
 
 
